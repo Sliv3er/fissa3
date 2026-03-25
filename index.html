@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FISSA3 ⚡ إشتراكات بأرخص الأسوام</title>
-    <meta name="description" content="FISSA3 — إشتراكات Streaming و AI بأرخص الأسوام في تونس">
+    <meta name="description" content="FISSA3 — إشتراكات Streaming و AI بأرخص الأسوام في تونس. Netflix, Spotify, YouTube, ChatGPT, IPTV.">
+    <meta name="theme-color" content="#0a0618">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
-            --bg:#060612;
-            --card:rgba(255,255,255,0.035);
+            --bg:#0a0618;
+            --surface:rgba(255,255,255,0.03);
             --border:rgba(255,255,255,0.06);
-            --pink:#FF2D78;--cyan:#00E5FF;--gold:#FFD700;
-            --txt:#fff;--dim:#7a88a8;
+            --pink:#FF2D78;--cyan:#00E5FF;--gold:#FFD700;--purple:#7C3AED;
+            --txt:#fff;--dim:#8694b4;
         }
         html{scroll-behavior:smooth}
         body{
@@ -24,163 +25,255 @@
             min-height:100vh;
             overflow-x:hidden;
         }
-        body::before{
-            content:'';position:fixed;inset:0;z-index:-1;
+
+        /* ══ BACKGROUND ══ */
+        .bg-glow{
+            position:fixed;inset:0;z-index:0;pointer-events:none;
             background:
-                radial-gradient(ellipse at 50% -10%,rgba(124,58,237,.22) 0%,transparent 55%),
-                radial-gradient(circle at 90% 80%,rgba(255,45,120,.06) 0%,transparent 40%),
-                radial-gradient(circle at 10% 50%,rgba(0,229,255,.06) 0%,transparent 40%);
-            pointer-events:none
+                radial-gradient(circle 600px at 50% -15%,rgba(124,58,237,.25),transparent),
+                radial-gradient(circle 400px at 85% 70%,rgba(255,45,120,.08),transparent),
+                radial-gradient(circle 400px at 15% 60%,rgba(0,229,255,.08),transparent);
+        }
+        .stars{
+            position:fixed;inset:0;z-index:0;pointer-events:none;
+            background-image:
+                radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.3),transparent),
+                radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.2),transparent),
+                radial-gradient(1px 1px at 50% 10%,rgba(255,255,255,.25),transparent),
+                radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.15),transparent),
+                radial-gradient(1px 1px at 90% 80%,rgba(255,255,255,.2),transparent),
+                radial-gradient(1px 1px at 15% 90%,rgba(255,255,255,.15),transparent),
+                radial-gradient(1px 1px at 45% 45%,rgba(255,255,255,.1),transparent),
+                radial-gradient(1px 1px at 80% 15%,rgba(255,255,255,.2),transparent),
+                radial-gradient(1px 1px at 60% 75%,rgba(255,255,255,.15),transparent),
+                radial-gradient(1.5px 1.5px at 25% 35%,rgba(0,229,255,.4),transparent),
+                radial-gradient(1.5px 1.5px at 75% 55%,rgba(255,45,120,.3),transparent);
         }
 
-        .wrap{max-width:460px;margin:0 auto;padding:24px 18px 60px}
+        .wrap{max-width:480px;margin:0 auto;padding:0 18px 70px;position:relative;z-index:1}
 
-        .hdr{text-align:center;padding:40px 0 8px}
-        .hdr img{height:90px;filter:drop-shadow(0 0 24px rgba(255,45,120,.3))}
-        .hdr .sub{color:var(--dim);font-size:.92rem;margin-top:10px;font-weight:600}
+        /* ══ HERO ══ */
+        .hero{text-align:center;padding:50px 0 30px}
+        .hero-logo{
+            width:260px;max-width:75%;
+            filter:drop-shadow(0 0 40px rgba(255,45,120,.3)) drop-shadow(0 0 80px rgba(124,58,237,.2));
+            animation:breathe 4s ease-in-out infinite;
+        }
+        @keyframes breathe{0%,100%{filter:drop-shadow(0 0 40px rgba(255,45,120,.3)) drop-shadow(0 0 80px rgba(124,58,237,.2))}50%{filter:drop-shadow(0 0 50px rgba(255,45,120,.45)) drop-shadow(0 0 100px rgba(124,58,237,.3))}}
+        .hero h1{
+            font-size:1.8rem;font-weight:900;margin-top:20px;
+            background:linear-gradient(135deg,var(--pink),var(--purple),var(--cyan));
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .hero p{color:var(--dim);font-size:.95rem;margin-top:6px;font-weight:600}
 
-        .trust{display:flex;justify-content:center;gap:20px;margin:18px 0 32px;flex-wrap:wrap}
-        .trust span{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--dim);font-weight:600}
+        /* ══ TRUST BADGES ══ */
+        .badges{display:flex;justify-content:center;gap:10px;margin:0 0 35px;flex-wrap:wrap}
+        .badge{
+            display:flex;align-items:center;gap:5px;
+            background:rgba(255,255,255,.04);border:1px solid var(--border);
+            border-radius:100px;padding:8px 16px;
+            font-size:.78rem;color:var(--dim);font-weight:700;
+        }
 
-        .sec{font-size:.85rem;font-weight:700;color:var(--dim);margin:30px 0 12px;text-transform:uppercase;letter-spacing:1px}
+        /* ══ SECTION ══ */
+        .sec-head{
+            font-size:.78rem;font-weight:700;color:var(--dim);
+            text-transform:uppercase;letter-spacing:2px;
+            margin:32px 0 14px;
+        }
 
-        .cards{display:flex;flex-direction:column;gap:10px}
-        .card{
+        /* ══ SERVICE CARDS ══ */
+        .grid{display:flex;flex-direction:column;gap:10px}
+        .svc{
             display:flex;align-items:center;gap:14px;
-            background:var(--card);
+            background:var(--surface);
             border:1px solid var(--border);
-            border-radius:16px;
-            padding:14px 16px;
+            border-radius:18px;
+            padding:16px 18px;
             text-decoration:none;color:inherit;
-            transition:all .25s ease;
+            transition:all .25s cubic-bezier(.4,0,.2,1);
+            position:relative;
         }
-        .card:hover{
-            background:rgba(255,255,255,.07);
+        .svc:hover{
+            background:rgba(255,255,255,.06);
             transform:translateY(-2px);
-            box-shadow:0 8px 24px rgba(0,0,0,.4)
+            box-shadow:0 12px 40px rgba(0,0,0,.4);
         }
+        .svc:active{transform:scale(.98)}
 
-        .lb{
-            width:50px;height:50px;border-radius:14px;
+        /* Icon */
+        .ico{
+            width:52px;height:52px;border-radius:14px;
             display:flex;align-items:center;justify-content:center;
-            flex-shrink:0;overflow:hidden;
+            flex-shrink:0;font-size:1.4rem;
         }
-        .lb img{width:32px;height:32px;object-fit:contain}
+        .ico img{width:30px;height:30px;object-fit:contain}
 
-        .card.netflix .lb{background:rgba(229,9,20,.12)}
-        .card.spotify .lb{background:rgba(29,185,84,.12)}
-        .card.youtube .lb{background:rgba(255,0,0,.12)}
-        .card.shahid .lb{background:rgba(0,200,150,.12)}
-        .card.iptv .lb{background:rgba(255,215,0,.12)}
-        .card.chatgpt .lb{background:rgba(16,163,127,.12)}
-        .card.cursor .lb{background:rgba(124,58,237,.12)}
-        .card.capcut .lb{background:rgba(0,229,255,.12)}
+        /* Brand colors */
+        .svc.netflix .ico{background:rgba(229,9,20,.12)}
+        .svc.spotify .ico{background:rgba(29,185,84,.12)}
+        .svc.youtube .ico{background:rgba(255,0,0,.12)}
+        .svc.shahid .ico{background:rgba(0,200,150,.12)}
+        .svc.iptv .ico{background:rgba(255,215,0,.10)}
+        .svc.chatgpt .ico{background:rgba(16,163,127,.12)}
+        .svc.cursor .ico{background:rgba(124,58,237,.12)}
+        .svc.capcut .ico{background:rgba(0,229,255,.12)}
 
-        .nfo{flex:1;min-width:0}
-        .nfo h3{font-size:1.02rem;font-weight:800;font-family:'Inter','Cairo',sans-serif}
-        .nfo p{font-size:.78rem;color:var(--dim);margin-top:1px}
+        .meta{flex:1;min-width:0}
+        .meta h3{font-size:1rem;font-weight:800;font-family:'Inter','Cairo',sans-serif;line-height:1.2}
+        .meta p{font-size:.76rem;color:var(--dim);margin-top:2px}
 
-        .pr{text-align:left;flex-shrink:0}
-        .pr b{display:block;font-size:1.2rem;font-weight:900;color:var(--gold);font-family:'Inter',sans-serif}
-        .pr small{font-size:.72rem;color:var(--dim)}
+        .cost{text-align:left;flex-shrink:0;min-width:68px}
+        .cost strong{
+            display:block;font-size:1.2rem;font-weight:900;
+            color:var(--gold);font-family:'Inter',sans-serif;
+        }
+        .cost small{font-size:.7rem;color:var(--dim)}
 
+        /* Accent arrow */
+        .svc::after{
+            content:'→';position:absolute;left:16px;
+            font-size:1rem;color:rgba(255,255,255,.15);
+            transition:all .2s;
+        }
+        .svc:hover::after{color:var(--pink);left:12px}
+
+        /* ══ CTA ══ */
+        .cta-wrap{margin-top:40px;text-align:center}
         .cta{
-            display:block;text-align:center;margin-top:38px;
-            background:linear-gradient(135deg,var(--pink),#7C3AED);
-            color:#fff;padding:16px;border-radius:14px;
+            display:inline-flex;align-items:center;justify-content:center;gap:10px;
+            width:100%;
+            background:linear-gradient(135deg,var(--pink),var(--purple));
+            color:#fff;padding:18px 24px;border-radius:16px;
             font-size:1.15rem;font-weight:800;text-decoration:none;
-            box-shadow:0 10px 30px rgba(255,45,120,.3);
-            transition:transform .2s
+            font-family:'Cairo',sans-serif;
+            box-shadow:0 12px 40px rgba(255,45,120,.3);
+            transition:all .25s;
+            position:relative;overflow:hidden;
         }
-        .cta:hover{transform:scale(1.02)}
+        .cta::before{
+            content:'';position:absolute;inset:0;
+            background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.1) 50%,transparent 60%);
+            transform:translateX(-100%);
+            animation:shimmer 3s ease-in-out infinite;
+        }
+        @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+        .cta:hover{transform:translateY(-2px);box-shadow:0 16px 50px rgba(255,45,120,.4)}
 
-        .pay{text-align:center;margin-top:18px;font-size:.82rem;color:var(--dim);font-weight:600}
-        .ft{text-align:center;margin-top:28px;font-size:.72rem;color:var(--dim)}
-        .ft a{color:var(--pink);text-decoration:none}
-
-        .card{opacity:0;animation:slideUp .4s ease forwards}
-        @keyframes slideUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-        .cards:nth-of-type(1) .card:nth-child(1){animation-delay:.05s}
-        .cards:nth-of-type(1) .card:nth-child(2){animation-delay:.1s}
-        .cards:nth-of-type(1) .card:nth-child(3){animation-delay:.15s}
-        .cards:nth-of-type(1) .card:nth-child(4){animation-delay:.2s}
-        .cards:nth-of-type(1) .card:nth-child(5){animation-delay:.25s}
-        .cards:nth-of-type(2) .card:nth-child(1){animation-delay:.3s}
-        .cards:nth-of-type(2) .card:nth-child(2){animation-delay:.35s}
-        .cards:nth-of-type(2) .card:nth-child(3){animation-delay:.4s}
+        /* ══ FOOTER ══ */
+        .pay{text-align:center;margin-top:24px;font-size:.82rem;color:var(--dim);font-weight:600}
+        .ig-link{
+            display:flex;align-items:center;justify-content:center;gap:8px;
+            margin-top:16px;text-decoration:none;color:var(--dim);
+            font-size:.85rem;font-weight:600;transition:color .2s;
+        }
+        .ig-link:hover{color:var(--pink)}
+        .ig-link svg{width:18px;height:18px;fill:currentColor}
+        .foot{text-align:center;margin-top:24px;font-size:.68rem;color:rgba(255,255,255,.2)}
 
         /* Shahid text logo */
-        .shahid-logo{font-size:18px;font-weight:900;color:#00C896;font-family:'Cairo',sans-serif;line-height:1}
-        /* CapCut scissors icon */
-        .capcut-icon{font-size:26px}
+        .shahid-txt{font-size:16px;font-weight:900;color:#00C896;font-family:'Cairo',sans-serif}
+        /* CapCut emoji */
+        .capcut-e{font-size:24px}
+
+        /* ══ ANIMATIONS ══ */
+        .svc{opacity:0;animation:rise .5s ease forwards}
+        @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+        .grid:first-of-type .svc:nth-child(1){animation-delay:.05s}
+        .grid:first-of-type .svc:nth-child(2){animation-delay:.1s}
+        .grid:first-of-type .svc:nth-child(3){animation-delay:.15s}
+        .grid:first-of-type .svc:nth-child(4){animation-delay:.2s}
+        .grid:first-of-type .svc:nth-child(5){animation-delay:.25s}
+        .grid:last-of-type .svc:nth-child(1){animation-delay:.3s}
+        .grid:last-of-type .svc:nth-child(2){animation-delay:.35s}
+        .grid:last-of-type .svc:nth-child(3){animation-delay:.4s}
     </style>
 </head>
 <body>
+<div class="bg-glow"></div>
+<div class="stars"></div>
+
 <div class="wrap">
 
-    <div class="hdr">
-        <img src="https://files.catbox.moe/w0af3k.png" alt="FISSA3">
-        <p class="sub">إشتراكات Streaming و AI بأرخص الأسوام ⚡</p>
+    <!-- ══ HERO ══ -->
+    <div class="hero">
+        <img class="hero-logo" src="https://files.catbox.moe/w0af3k.png" alt="FISSA3">
+        <h1>إشتراكات بأرخص الأسوام</h1>
+        <p>Streaming · AI · Productivity 🇹🇳</p>
     </div>
 
-    <div class="trust">
-        <span>⚡ تفعيل فوري</span>
-        <span>🛡️ مضمون 100%</span>
-        <span>💳 D17 / Flouci</span>
+    <!-- ══ TRUST ══ -->
+    <div class="badges">
+        <div class="badge">⚡ تفعيل فوري</div>
+        <div class="badge">🛡️ مضمون 100%</div>
+        <div class="badge">💳 D17 / Flouci</div>
     </div>
 
-    <div class="sec">🎬 Streaming & Entertainment</div>
-    <div class="cards">
-        <a class="card netflix" href="https://ig.me/m/fissaa.tn">
-            <div class="lb"><img src="https://cdn.simpleicons.org/netflix/E50914" alt="Netflix"></div>
-            <div class="nfo"><h3>Netflix</h3><p>أفلام و سيريات 4K بلا حدود</p></div>
-            <div class="pr"><b>8,9 DT</b><small>/ شهر</small></div>
+    <!-- ══ STREAMING ══ -->
+    <div class="sec-head">🎬 Streaming & Entertainment</div>
+    <div class="grid">
+        <a class="svc netflix" href="https://ig.me/m/fissaa.tn">
+            <div class="ico"><img src="https://cdn.simpleicons.org/netflix/E50914" alt="Netflix"></div>
+            <div class="meta"><h3>Netflix</h3><p>أفلام و سيريات 4K بلا حدود</p></div>
+            <div class="cost"><strong>8,9 DT</strong><small>/ شهر</small></div>
         </a>
-        <a class="card spotify" href="https://ig.me/m/fissaa.tn">
-            <div class="lb"><img src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify"></div>
-            <div class="nfo"><h3>Spotify Premium</h3><p>موزيكا بلا إعلانات + تحميل</p></div>
-            <div class="pr"><b>7,9 DT</b><small>/ شهر</small></div>
+        <a class="svc spotify" href="https://ig.me/m/fissaa.tn">
+            <div class="ico"><img src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify"></div>
+            <div class="meta"><h3>Spotify Premium</h3><p>موزيكا بلا إعلانات + تحميل</p></div>
+            <div class="cost"><strong>7,9 DT</strong><small>/ شهر</small></div>
         </a>
-        <a class="card youtube" href="https://ig.me/m/fissaa.tn">
-            <div class="lb"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube"></div>
-            <div class="nfo"><h3>YouTube Premium</h3><p>بلا إعلانات + YouTube Music</p></div>
-            <div class="pr"><b>7,9 DT</b><small>/ شهر</small></div>
+        <a class="svc youtube" href="https://ig.me/m/fissaa.tn">
+            <div class="ico"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube"></div>
+            <div class="meta"><h3>YouTube Premium</h3><p>بلا إعلانات + YouTube Music</p></div>
+            <div class="cost"><strong>7,9 DT</strong><small>/ شهر</small></div>
         </a>
-        <a class="card shahid" href="https://ig.me/m/fissaa.tn">
-            <div class="lb"><span class="shahid-logo">شاهد</span></div>
-            <div class="nfo"><h3>Shahid VIP</h3><p>مسلسلات عربية و تركية</p></div>
-            <div class="pr"><b>7,9 DT</b><small>/ شهر</small></div>
+        <a class="svc shahid" href="https://ig.me/m/fissaa.tn">
+            <div class="ico"><span class="shahid-txt">شاهد</span></div>
+            <div class="meta"><h3>Shahid VIP</h3><p>مسلسلات عربية و تركية</p></div>
+            <div class="cost"><strong>7,9 DT</strong><small>/ شهر</small></div>
         </a>
-        <a class="card iptv" href="https://ig.me/m/fissaa.tn">
-            <div class="lb"><img src="https://img.icons8.com/fluency/96/tv.png" alt="IPTV"></div>
-            <div class="nfo"><h3>IPTV Premium</h3><p>+1000 قناة — beIN, SSC, الكل</p></div>
-            <div class="pr"><b>19,9 DT</b><small>/ شهر</small></div>
-        </a>
-    </div>
-
-    <div class="sec">🤖 AI & Productivity</div>
-    <div class="cards">
-        <a class="card chatgpt" href="https://ig.me/m/fissaa.tn">
-            <div class="lb"><img src="https://img.icons8.com/color/96/chatgpt.png" alt="ChatGPT"></div>
-            <div class="nfo"><h3>ChatGPT Plus</h3><p>GPT-5 + Sora + Deep Research</p></div>
-            <div class="pr"><b>12,9 DT</b><small>/ شهر</small></div>
-        </a>
-        <a class="card cursor" href="https://ig.me/m/fissaa.tn">
-            <div class="lb"><img src="https://cdn.simpleicons.org/cursor/7C3AED" alt="Cursor"></div>
-            <div class="nfo"><h3>Cursor Pro</h3><p>AI يكتبلك الكود بسرعة</p></div>
-            <div class="pr"><b>219 DT</b><small>/ عام</small></div>
-        </a>
-        <a class="card capcut" href="https://ig.me/m/fissaa.tn">
-            <div class="lb"><span class="capcut-icon">✂️</span></div>
-            <div class="nfo"><h3>CapCut Pro</h3><p>مونتاج فيديو إحترافي</p></div>
-            <div class="pr"><b>7,9 DT</b><small>/ شهر</small></div>
+        <a class="svc iptv" href="https://ig.me/m/fissaa.tn">
+            <div class="ico"><img src="https://img.icons8.com/fluency/96/tv.png" alt="IPTV"></div>
+            <div class="meta"><h3>IPTV Premium</h3><p>+1000 قناة — beIN, SSC, الكل</p></div>
+            <div class="cost"><strong>19,9 DT</strong><small>/ شهر</small></div>
         </a>
     </div>
 
-    <a class="cta" href="https://ig.me/m/fissaa.tn">📩 أطلب الآن — DM على Instagram</a>
+    <!-- ══ AI ══ -->
+    <div class="sec-head">🤖 AI & Productivity</div>
+    <div class="grid">
+        <a class="svc chatgpt" href="https://ig.me/m/fissaa.tn">
+            <div class="ico"><img src="https://img.icons8.com/color/96/chatgpt.png" alt="ChatGPT"></div>
+            <div class="meta"><h3>ChatGPT Plus</h3><p>GPT-5 + Sora + Deep Research</p></div>
+            <div class="cost"><strong>12,9 DT</strong><small>/ شهر</small></div>
+        </a>
+        <a class="svc cursor" href="https://ig.me/m/fissaa.tn">
+            <div class="ico"><img src="https://cdn.simpleicons.org/cursor/7C3AED" alt="Cursor"></div>
+            <div class="meta"><h3>Cursor Pro</h3><p>AI يكتبلك الكود بسرعة</p></div>
+            <div class="cost"><strong>219 DT</strong><small>/ عام</small></div>
+        </a>
+        <a class="svc capcut" href="https://ig.me/m/fissaa.tn">
+            <div class="ico"><span class="capcut-e">✂️</span></div>
+            <div class="meta"><h3>CapCut Pro</h3><p>مونتاج فيديو إحترافي</p></div>
+            <div class="cost"><strong>7,9 DT</strong><small>/ شهر</small></div>
+        </a>
+    </div>
+
+    <!-- ══ CTA ══ -->
+    <div class="cta-wrap">
+        <a class="cta" href="https://ig.me/m/fissaa.tn">📩 أطلب الآن — تفعيل فوري ⚡</a>
+    </div>
+
     <div class="pay">💳 D17 — Flouci — Barid Bank</div>
-    <div class="ft">© 2026 FISSA3 — <a href="https://instagram.com/fissaa.tn">@fissaa.tn</a></div>
 
+    <a class="ig-link" href="https://instagram.com/fissaa.tn">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.5.2 5.1 1.8 5.3 5.3.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.2 3.4-1.8 5.1-5.3 5.3-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.5-.2-5.1-1.8-5.3-5.3-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.2-3.5 1.8-5.1 5.3-5.3 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
+        @fissaa.tn
+    </a>
+
+    <div class="foot">© 2026 FISSA3</div>
 </div>
 </body>
 </html>

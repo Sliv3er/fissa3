@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FISSA3 ⚡ إشتراكات بأرخص الأسوام</title>
+    <meta name="description" content="FISSA3 — إشتراكات Streaming و AI بأرخص الأسوام في تونس. Netflix, Spotify, YouTube Premium, ChatGPT, IPTV والمزيد.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-dark: #0a0a1a;
+            --bg-card: rgba(255,255,255,0.05);
+            --pink: #FF2D78;
+            --cyan: #00E5FF;
+            --yellow: #FFD700;
+            --green: #1DB954;
+            --red: #E50914;
+            --teal: #10A37F;
+            --purple: #7C3AED;
+            --text: #ffffff;
+            --text-dim: #8892b0;
+        }
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 50% 0%, rgba(124, 58, 237, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 50%, rgba(255, 45, 120, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(0, 229, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container { max-width: 480px; margin: 0 auto; padding: 20px 16px 40px; position: relative; z-index: 1; }
+        .header { text-align: center; padding: 30px 0 20px; }
+        .logo-text { font-size: 3rem; font-weight: 900; letter-spacing: 2px; line-height: 1; }
+        .logo-text .fi { color: var(--pink); }
+        .logo-text .ss { color: var(--cyan); }
+        .logo-text .a3 { color: var(--yellow); }
+        .logo-text .arrows { color: var(--yellow); font-size: 2.5rem; }
+        .tagline { color: var(--text-dim); font-size: 0.95rem; margin-top: 8px; }
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white; padding: 4px 16px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; margin-top: 12px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 45, 120, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(255, 45, 120, 0); }
+        }
+        .stats { display: flex; justify-content: center; gap: 30px; margin: 20px 0; }
+        .stat { text-align: center; }
+        .stat-num { font-size: 1.3rem; font-weight: 900; color: var(--cyan); }
+        .stat-label { font-size: 0.7rem; color: var(--text-dim); }
+        .section-title { font-size: 1.1rem; font-weight: 700; margin: 25px 0 12px; padding-right: 4px; display: flex; align-items: center; gap: 8px; }
+        .services { display: flex; flex-direction: column; gap: 10px; }
+        .service-card {
+            background: var(--bg-card); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px; padding: 16px; display: flex; align-items: center; gap: 14px;
+            transition: all 0.3s ease; cursor: pointer; text-decoration: none; color: inherit;
+            opacity: 0; transform: translateY(20px); animation: fadeUp 0.5s ease forwards;
+        }
+        .service-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); transform: translateY(-2px); }
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.15s; }
+        .service-card:nth-child(3) { animation-delay: 0.2s; }
+        .service-card:nth-child(4) { animation-delay: 0.25s; }
+        .service-card:nth-child(5) { animation-delay: 0.3s; }
+        .service-card:nth-child(6) { animation-delay: 0.35s; }
+        .service-card:nth-child(7) { animation-delay: 0.4s; }
+        .service-card:nth-child(8) { animation-delay: 0.45s; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .service-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+        .service-info { flex: 1; }
+        .service-name { font-weight: 700; font-size: 1rem; }
+        .service-desc { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; }
+        .service-price { text-align: left; flex-shrink: 0; }
+        .price-from { font-size: 0.65rem; color: var(--text-dim); }
+        .price-value { font-size: 1.1rem; font-weight: 900; color: var(--yellow); }
+        .price-unit { font-size: 0.65rem; color: var(--text-dim); }
+        .netflix .service-icon { background: rgba(229, 9, 20, 0.2); color: var(--red); }
+        .spotify .service-icon { background: rgba(29, 185, 84, 0.2); color: var(--green); }
+        .youtube .service-icon { background: rgba(255, 0, 0, 0.2); color: #FF0000; }
+        .shahid .service-icon { background: rgba(0, 200, 150, 0.2); color: #00C896; }
+        .chatgpt .service-icon { background: rgba(16, 163, 127, 0.2); color: var(--teal); }
+        .cursor .service-icon { background: rgba(124, 58, 237, 0.2); color: var(--purple); }
+        .capcut .service-icon { background: rgba(0, 229, 255, 0.2); color: var(--cyan); }
+        .iptv .service-icon { background: rgba(255, 215, 0, 0.2); color: var(--yellow); }
+        .cta-section { margin-top: 30px; text-align: center; }
+        .cta-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white; border: none; padding: 16px 40px; border-radius: 50px;
+            font-size: 1.1rem; font-weight: 700; font-family: 'Cairo', sans-serif;
+            cursor: pointer; text-decoration: none; transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 45, 120, 0.3);
+        }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255, 45, 120, 0.5); }
+        .cta-sub { font-size: 0.8rem; color: var(--text-dim); margin-top: 10px; }
+        .features { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 25px 0; }
+        .feature { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 16px 8px; text-align: center; }
+        .feature-icon { font-size: 1.5rem; margin-bottom: 6px; }
+        .feature-text { font-size: 0.7rem; color: var(--text-dim); font-weight: 600; }
+        .payment { display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .payment-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 10px 20px; font-size: 0.85rem; font-weight: 600; color: var(--text-dim); }
+        .footer { text-align: center; padding: 30px 0; color: var(--text-dim); font-size: 0.7rem; }
+        .particles { position: fixed; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+        .particle { position: absolute; width: 3px; height: 3px; border-radius: 50%; animation: float linear infinite; }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; } 90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <header class="header">
+            <div class="logo-text">
+                <span class="fi">FI</span><span class="ss">SS</span><span class="a3">A</span><span class="arrows">»</span>
+            </div>
+            <p class="tagline">⚡ إشتراكات بأرخص الأسوام في تونس</p>
+            <span class="badge">🔥 رجعنا أقوى</span>
+        </header>
+        <div class="stats">
+            <div class="stat"><div class="stat-num">13.6K</div><div class="stat-label">متابع</div></div>
+            <div class="stat"><div class="stat-num">8+</div><div class="stat-label">خدمة</div></div>
+            <div class="stat"><div class="stat-num">⚡</div><div class="stat-label">خدمة فورية</div></div>
+        </div>
+        <div class="features">
+            <div class="feature"><div class="feature-icon">⚡</div><div class="feature-text">تفعيل فوري</div></div>
+            <div class="feature"><div class="feature-icon">💳</div><div class="feature-text">D17 / Flouci</div></div>
+            <div class="feature"><div class="feature-icon">🛡️</div><div class="feature-text">مضمون 100%</div></div>
+        </div>
+        <div class="section-title">🎬 Streaming</div>
+        <div class="services">
+            <a class="service-card netflix" href="https://ig.me/m/fissaa.tn"><div class="service-icon">🎬</div><div class="service-info"><div class="service-name">Netflix</div><div class="service-desc">أفلام و سيريات بلا حدود</div></div><div class="service-price"><div class="price-from">إبتداءً من</div><div class="price-value">8,9 DT</div><div class="price-unit">/ شهر</div></div></a>
+            <a class="service-card spotify" href="https://ig.me/m/fissaa.tn"><div class="service-icon">🎵</div><div class="service-info"><div class="service-name">Spotify Premium</div><div class="service-desc">موزيكا بلا إعلانات</div></div><div class="service-price"><div class="price-from">إبتداءً من</div><div class="price-value">7,9 DT</div><div class="price-unit">/ شهر</div></div></a>
+            <a class="service-card youtube" href="https://ig.me/m/fissaa.tn"><div class="service-icon">▶️</div><div class="service-info"><div class="service-name">YouTube Premium</div><div class="service-desc">يوتيوب بلا إعلانات + Music</div></div><div class="service-price"><div class="price-from">إبتداءً من</div><div class="price-value">7,9 DT</div><div class="price-unit">/ شهر</div></div></a>
+            <a class="service-card shahid" href="https://ig.me/m/fissaa.tn"><div class="service-icon">📺</div><div class="service-info"><div class="service-name">Shahid VIP</div><div class="service-desc">مسلسلات عربية و تركية</div></div><div class="service-price"><div class="price-from">إبتداءً من</div><div class="price-value">7,9 DT</div><div class="price-unit">/ شهر</div></div></a>
+            <a class="service-card iptv" href="https://ig.me/m/fissaa.tn"><div class="service-icon">📡</div><div class="service-info"><div class="service-name">IPTV Premium</div><div class="service-desc">+1000 قناة — beIN, SSC, الكل</div></div><div class="service-price"><div class="price-from">إبتداءً من</div><div class="price-value">19,9 DT</div><div class="price-unit">/ شهر</div></div></a>
+        </div>
+        <div class="section-title">🤖 AI & Productivity</div>
+        <div class="services">
+            <a class="service-card chatgpt" href="https://ig.me/m/fissaa.tn"><div class="service-icon">🤖</div><div class="service-info"><div class="service-name">ChatGPT Plus</div><div class="service-desc">GPT-5 + Sora + Deep Research</div></div><div class="service-price"><div class="price-from">إبتداءً من</div><div class="price-value">12,9 DT</div><div class="price-unit">/ شهر</div></div></a>
+            <a class="service-card cursor" href="https://ig.me/m/fissaa.tn"><div class="service-icon">💻</div><div class="service-info"><div class="service-name">Cursor Pro</div><div class="service-desc">AI يكتبلك الكود</div></div><div class="service-price"><div class="price-from">إبتداءً من</div><div class="price-value">219,9 DT</div><div class="price-unit">/ عام</div></div></a>
+            <a class="service-card capcut" href="https://ig.me/m/fissaa.tn"><div class="service-icon">✂️</div><div class="service-info"><div class="service-name">CapCut Pro</div><div class="service-desc">مونتاج فيديو إحترافي</div></div><div class="service-price"><div class="price-from">إبتداءً من</div><div class="price-value">7,9 DT</div><div class="price-unit">/ شهر</div></div></a>
+        </div>
+        <div class="cta-section">
+            <a class="cta-btn" href="https://ig.me/m/fissaa.tn">📩 أطلب الآن</a>
+            <p class="cta-sub">ابعثلنا DM على Instagram وتتخدم في الدقيقة ⚡</p>
+        </div>
+        <div class="section-title" style="justify-content: center;">💳 طرق الدفع</div>
+        <div class="payment">
+            <div class="payment-item">D17 💳</div>
+            <div class="payment-item">Flouci 📱</div>
+            <div class="payment-item">Barid Bank 🏦</div>
+        </div>
+        <footer class="footer">
+            <p>© 2026 FISSA3 — جميع الحقوق محفوظة</p>
+            <p style="margin-top: 4px;"><a href="https://instagram.com/fissaa.tn" style="color: var(--pink); text-decoration: none;">@fissaa.tn</a></p>
+        </footer>
+    </div>
+    <script>
+        const particlesEl = document.getElementById('particles');
+        const colors = ['#FF2D78', '#00E5FF', '#FFD700', '#7C3AED'];
+        for (let i = 0; i < 20; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            p.style.animationDuration = (8 + Math.random() * 12) + 's';
+            p.style.animationDelay = (Math.random() * 8) + 's';
+            p.style.width = (2 + Math.random() * 3) + 'px';
+            p.style.height = p.style.width;
+            particlesEl.appendChild(p);
+        }
+    </script>
+</body>
+</html>

@@ -26,7 +26,6 @@
             overflow-x:hidden;
         }
 
-        /* ══ BACKGROUND ══ */
         .bg-glow{
             position:fixed;inset:0;z-index:0;pointer-events:none;
             background:
@@ -52,7 +51,6 @@
 
         .wrap{max-width:480px;margin:0 auto;padding:0 18px 70px;position:relative;z-index:1}
 
-        /* ══ HERO ══ */
         .hero{text-align:center;padding:50px 0 30px}
         .hero-logo{
             width:260px;max-width:75%;
@@ -68,7 +66,6 @@
         }
         .hero p{color:var(--dim);font-size:.95rem;margin-top:6px;font-weight:600}
 
-        /* ══ TRUST BADGES ══ */
         .badges{display:flex;justify-content:center;gap:10px;margin:0 0 35px;flex-wrap:wrap}
         .badge{
             display:flex;align-items:center;gap:5px;
@@ -77,14 +74,12 @@
             font-size:.78rem;color:var(--dim);font-weight:700;
         }
 
-        /* ══ SECTION ══ */
         .sec-head{
             font-size:.78rem;font-weight:700;color:var(--dim);
             text-transform:uppercase;letter-spacing:2px;
             margin:32px 0 14px;
         }
 
-        /* ══ SERVICE CARDS ══ */
         .grid{display:flex;flex-direction:column;gap:10px}
         .svc{
             display:flex;align-items:center;gap:14px;
@@ -94,7 +89,7 @@
             padding:16px 18px;
             text-decoration:none;color:inherit;
             transition:all .25s cubic-bezier(.4,0,.2,1);
-            position:relative;
+            position:relative;cursor:pointer;
         }
         .svc:hover{
             background:rgba(255,255,255,.06);
@@ -103,7 +98,6 @@
         }
         .svc:active{transform:scale(.98)}
 
-        /* Icon */
         .ico{
             width:52px;height:52px;border-radius:14px;
             display:flex;align-items:center;justify-content:center;
@@ -111,7 +105,6 @@
         }
         .ico img{width:30px;height:30px;object-fit:contain}
 
-        /* Brand colors */
         .svc.netflix .ico{background:rgba(229,9,20,.12)}
         .svc.spotify .ico{background:rgba(29,185,84,.12)}
         .svc.youtube .ico{background:rgba(255,0,0,.12)}
@@ -132,7 +125,6 @@
         }
         .cost small{font-size:.7rem;color:var(--dim)}
 
-        /* Accent arrow */
         .svc::after{
             content:'→';position:absolute;left:16px;
             font-size:1rem;color:rgba(255,255,255,.15);
@@ -140,7 +132,6 @@
         }
         .svc:hover::after{color:var(--pink);left:12px}
 
-        /* ══ CTA ══ */
         .cta-wrap{margin-top:40px;text-align:center}
         .cta{
             display:inline-flex;align-items:center;justify-content:center;gap:10px;
@@ -151,7 +142,7 @@
             font-family:'Cairo',sans-serif;
             box-shadow:0 12px 40px rgba(255,45,120,.3);
             transition:all .25s;
-            position:relative;overflow:hidden;
+            position:relative;overflow:hidden;cursor:pointer;
         }
         .cta::before{
             content:'';position:absolute;inset:0;
@@ -162,7 +153,6 @@
         @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
         .cta:hover{transform:translateY(-2px);box-shadow:0 16px 50px rgba(255,45,120,.4)}
 
-        /* ══ FOOTER ══ */
         .pay{text-align:center;margin-top:24px;font-size:.82rem;color:var(--dim);font-weight:600}
         .ig-link{
             display:flex;align-items:center;justify-content:center;gap:8px;
@@ -173,12 +163,9 @@
         .ig-link svg{width:18px;height:18px;fill:currentColor}
         .foot{text-align:center;margin-top:24px;font-size:.68rem;color:rgba(255,255,255,.2)}
 
-        /* Shahid text logo */
         .shahid-txt{font-size:16px;font-weight:900;color:#00C896;font-family:'Cairo',sans-serif}
-        /* CapCut emoji */
         .capcut-e{font-size:24px}
 
-        /* ══ ANIMATIONS ══ */
         .svc{opacity:0;animation:rise .5s ease forwards}
         @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
         .grid:first-of-type .svc:nth-child(1){animation-delay:.05s}
@@ -197,83 +184,100 @@
 
 <div class="wrap">
 
-    <!-- ══ HERO ══ -->
     <div class="hero">
         <img class="hero-logo" src="https://files.catbox.moe/w0af3k.png" alt="FISSA3">
         <h1>إشتراكات بأرخص الأسوام</h1>
         <p>Streaming · AI · Productivity 🇹🇳</p>
     </div>
 
-    <!-- ══ TRUST ══ -->
     <div class="badges">
         <div class="badge">⚡ تفعيل فوري</div>
         <div class="badge">🛡️ مضمون 100%</div>
         <div class="badge">💳 D17 / Flouci</div>
     </div>
 
-    <!-- ══ STREAMING ══ -->
     <div class="sec-head">🎬 Streaming & Entertainment</div>
     <div class="grid">
-        <a class="svc netflix" href="https://ig.me/m/fissaa.tn">
+        <a class="svc netflix" onclick="openIG(event)">
             <div class="ico"><img src="https://cdn.simpleicons.org/netflix/E50914" alt="Netflix"></div>
             <div class="meta"><h3>Netflix</h3><p>أفلام و سيريات 4K بلا حدود</p></div>
             <div class="cost"><strong>8,9 DT</strong><small>/ شهر</small></div>
         </a>
-        <a class="svc spotify" href="https://ig.me/m/fissaa.tn">
+        <a class="svc spotify" onclick="openIG(event)">
             <div class="ico"><img src="https://cdn.simpleicons.org/spotify/1DB954" alt="Spotify"></div>
             <div class="meta"><h3>Spotify Premium</h3><p>موزيكا بلا إعلانات + تحميل</p></div>
             <div class="cost"><strong>7,9 DT</strong><small>/ شهر</small></div>
         </a>
-        <a class="svc youtube" href="https://ig.me/m/fissaa.tn">
+        <a class="svc youtube" onclick="openIG(event)">
             <div class="ico"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt="YouTube"></div>
             <div class="meta"><h3>YouTube Premium</h3><p>بلا إعلانات + YouTube Music</p></div>
             <div class="cost"><strong>7,9 DT</strong><small>/ شهر</small></div>
         </a>
-        <a class="svc shahid" href="https://ig.me/m/fissaa.tn">
+        <a class="svc shahid" onclick="openIG(event)">
             <div class="ico"><span class="shahid-txt">شاهد</span></div>
             <div class="meta"><h3>Shahid VIP</h3><p>مسلسلات عربية و تركية</p></div>
             <div class="cost"><strong>7,9 DT</strong><small>/ شهر</small></div>
         </a>
-        <a class="svc iptv" href="https://ig.me/m/fissaa.tn">
+        <a class="svc iptv" onclick="openIG(event)">
             <div class="ico"><img src="https://img.icons8.com/fluency/96/tv.png" alt="IPTV"></div>
             <div class="meta"><h3>IPTV Premium</h3><p>+1000 قناة — beIN, SSC, الكل</p></div>
             <div class="cost"><strong>19,9 DT</strong><small>/ شهر</small></div>
         </a>
     </div>
 
-    <!-- ══ AI ══ -->
     <div class="sec-head">🤖 AI & Productivity</div>
     <div class="grid">
-        <a class="svc chatgpt" href="https://ig.me/m/fissaa.tn">
+        <a class="svc chatgpt" onclick="openIG(event)">
             <div class="ico"><img src="https://img.icons8.com/color/96/chatgpt.png" alt="ChatGPT"></div>
             <div class="meta"><h3>ChatGPT Plus</h3><p>GPT-5 + Sora + Deep Research</p></div>
             <div class="cost"><strong>12,9 DT</strong><small>/ شهر</small></div>
         </a>
-        <a class="svc cursor" href="https://ig.me/m/fissaa.tn">
+        <a class="svc cursor" onclick="openIG(event)">
             <div class="ico"><img src="https://cdn.simpleicons.org/cursor/7C3AED" alt="Cursor"></div>
             <div class="meta"><h3>Cursor Pro</h3><p>AI يكتبلك الكود بسرعة</p></div>
             <div class="cost"><strong>219 DT</strong><small>/ عام</small></div>
         </a>
-        <a class="svc capcut" href="https://ig.me/m/fissaa.tn">
+        <a class="svc capcut" onclick="openIG(event)">
             <div class="ico"><span class="capcut-e">✂️</span></div>
             <div class="meta"><h3>CapCut Pro</h3><p>مونتاج فيديو إحترافي</p></div>
             <div class="cost"><strong>7,9 DT</strong><small>/ شهر</small></div>
         </a>
     </div>
 
-    <!-- ══ CTA ══ -->
     <div class="cta-wrap">
-        <a class="cta" href="https://ig.me/m/fissaa.tn">📩 أطلب الآن — تفعيل فوري ⚡</a>
+        <a class="cta" onclick="openIG(event)">📩 أطلب الآن — تفعيل فوري ⚡</a>
     </div>
 
     <div class="pay">💳 D17 — Flouci — Barid Bank</div>
 
-    <a class="ig-link" href="https://instagram.com/fissaa.tn">
+    <a class="ig-link" onclick="openIG(event)">
         <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.5.2 5.1 1.8 5.3 5.3.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.2 3.4-1.8 5.1-5.3 5.3-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.5-.2-5.1-1.8-5.3-5.3-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.2-3.5 1.8-5.1 5.3-5.3 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
         @fissaa.tn
     </a>
 
     <div class="foot">© 2026 FISSA3</div>
 </div>
+
+<script>
+function openIG(e){
+    e.preventDefault();
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if(isMobile){
+        // Try to open Instagram app directly
+        var appUrl = 'instagram://user?username=fissaa.tn';
+        var webUrl = 'https://ig.me/m/fissaa.tn';
+        var start = Date.now();
+        window.location = appUrl;
+        // If app didn't open after 1.5s, fall back to web
+        setTimeout(function(){
+            if(Date.now() - start < 2000){
+                window.location = webUrl;
+            }
+        }, 1500);
+    } else {
+        window.open('https://ig.me/m/fissaa.tn', '_blank');
+    }
+}
+</script>
 </body>
 </html>
